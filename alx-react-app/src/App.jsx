@@ -16,10 +16,9 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Hello everyone, I am learning React at ALX!</h1>
-      <p>This is a simple JSX component.</p>
-      <p>I am learning about JSX!</p>
-    
+     
+      {/* ✅ Use the component here */}
+      <WelcomeMessage />
     </>
   )
 }
