@@ -13,16 +13,14 @@ export const useRecipeStore = create((set, get) => ({
     get().filterRecipes();
   },
 
-  // ✅ Updated to match test expectations
-  updateRecipe: (id, updatedData) => {
+  updateRecipe: (updatedRecipe) => {
     const updatedRecipes = get().recipes.map(recipe =>
-      recipe.id === id ? { ...recipe, ...updatedData } : recipe
+      recipe.id === updatedRecipe.id ? updatedRecipe : recipe
     );
     set({ recipes: updatedRecipes });
     get().filterRecipes();
   },
 
-  // ✅ Matches test expectation already
   deleteRecipe: (id) => {
     const updatedRecipes = get().recipes.filter(recipe => recipe.id !== id);
     set({ recipes: updatedRecipes });
