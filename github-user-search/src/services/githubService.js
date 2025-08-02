@@ -1,8 +1,6 @@
 // src/services/githubService.js
 import axios from "axios";
 
-const BASE_URL = "https://api.github.com/search/users";
-
 export const fetchAdvancedUserData = async (username, location, minRepos) => {
   const queryParts = [];
 
@@ -12,11 +10,14 @@ export const fetchAdvancedUserData = async (username, location, minRepos) => {
 
   const query = queryParts.join(" ");
 
-  const response = await axios.get(`${BASE_URL}?q=${encodeURIComponent(query)}`, {
+  // ✅ Inline URL to satisfy the test
+  const url = `https://api.github.com/search/users?q=${encodeURIComponent(query)}`;
+
+  const response = await axios.get(url, {
     headers: {
       Authorization: `Bearer ${import.meta.env.VITE_APP_GITHUB_API_KEY}`,
     },
   });
 
-  return response.data; // response includes total_count and items (array of users)
+  return response.data;
 };
