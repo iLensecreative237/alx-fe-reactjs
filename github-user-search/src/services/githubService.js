@@ -1,15 +1,22 @@
 // src/services/githubService.js
-import axios from 'axios';
+import axios from "axios";
 
-const token = import.meta.env.VITE_GITHUB_TOKEN; // optional if you're using a token
+const BASE_URL = "https://api.github.com/search/users";
 
-export const fetchUserData = async (username) => {
-  try {
-    const response = await axios.get(`https://api.github.com/users/${username}`, {
-      headers: token ? { Authorization: `Bearer ${token}` } : {}
-    });
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+export const fetchAdvancedUserData = async (username, location, minRepos) => {
+  const queryParts = [];
+
+  if (username) queryParts.push(`${username} in:login`);
+  if (location) queryParts.push(`location:${location}`);
+  if (minRepos) queryParts.push(`repos:>=${minRepos}`);
+
+  const query = queryParts.join(" ");
+
+  const response = await axios.get(`${BASE_URL}?q=${encodeURIComponent(query)}`, {
+    headers: {
+      Authorization: `Bearer ${import.meta.env.VITE_APP_GITHUB_API_KEY}`,
+    },
+  });
+
+  return response.data; // response includes total_count and items (array of users)
 };
