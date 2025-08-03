@@ -1,14 +1,16 @@
-// src/App.jsx
-import React from 'react';
-import Search from './components/Search';
+import { useState } from "react";
+import Search from "./components/Search";
+//import UserList from "./components/UserList"; // A new component to render users
 
-function App() {
+const App = () => {
+  const [users, setUsers] = useState([]);
+
   return (
-    <div>
-      <h1>GitHub User Search</h1>
-      <Search />
+    <div className="max-w-xl mx-auto p-4">
+      <Search onResults={setUsers} />
+      <UserList users={users} />
     </div>
   );
-}
+};
 
 export default App;

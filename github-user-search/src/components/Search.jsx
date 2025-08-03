@@ -1,20 +1,21 @@
 import { useState } from "react";
-// 🔁 Rename import to match required name
 import { fetchAdvancedUserData as fetchUserData } from "../services/githubService";
 
-const Search = () => {
-  // ... state code remains unchanged
+const Search = ({ onResults }) => {
+  const [username, setUsername] = useState("");
+  const [location, setLocation] = useState("");
+  const [minRepos, setMinRepos] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(false);
-    setUsers([]);
 
     try {
-      // 🔁 Use fetchUserData here
       const data = await fetchUserData(username, location, minRepos);
-      setUsers(data.items);
+      onResults(data.items); // 👈 Pass results to parent
     } catch (err) {
       setError(true);
     } finally {
@@ -22,7 +23,36 @@ const Search = () => {
     }
   };
 
-  // ... rest of your component remains unchanged
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <input
+        type="text"
+        placeholder="GitHub Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        className="w-full p-2 border rounded"
+      />
+      <input
+        type="text"
+        placeholder="Location"
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
+        className="w-full p-2 border rounded"
+      />
+      <input
+        type="number"
+        placeholder="Minimum Repos"
+        value={minRepos}
+        onChange={(e) => setMinRepos(e.target.value)}
+        className="w-full p-2 border rounded"
+      />
+      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+        Search
+      </button>
+      {loading && <p>Loading...</p>}
+      {error && <p className="text-red-500">Error fetching users.</p>}
+    </form>
+  );
 };
-// at the bottom of Search.jsx
+
 export default Search;
