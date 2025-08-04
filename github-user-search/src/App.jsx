@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div className="max-w-xl mx-auto p-4">
       <Search onResults={setUsers} />
-      <UserList users={users} />
+      {/* <UserList users={users} /> */}
     </div>
   );
 };

@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { fetchAdvancedUserData as fetchUserData } from "../services/githubService";
+import { useState } from 'react';
+import { fetchAdvancedUserData as fetchUserData } from '../services/githubService';
 
 const Search = () => {
-  const [username, setUsername] = useState("");
-  const [location, setLocation] = useState("");
-  const [minRepos, setMinRepos] = useState("");
+  const [username, setUsername] = useState('');
+  const [location, setLocation] = useState('');
+  const [minRepos, setMinRepos] = useState('');
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -17,7 +17,7 @@ const Search = () => {
 
     try {
       const data = await fetchUserData(username, location, minRepos);
-      setUsers(data.items || []); // handle empty results safely
+      setUsers(data.items || []);
     } catch (err) {
       setError(true);
     } finally {
@@ -26,7 +26,7 @@ const Search = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="max-w-xl mx-auto">
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
@@ -55,22 +55,26 @@ const Search = () => {
       </form>
 
       {loading && <p className="mt-4">Loading...</p>}
-      {error && <p className="mt-4 text-red-600">Error fetching users.</p>}
+      {error && <p className="mt-4 text-red-600">Looks like we can't find the user.</p>}
 
-      {/* ✅ Ensure `.map()` is used here to render users */}
       <div className="mt-6">
         {users.map((user) => (
-          <div key={user.id} className="p-4 mb-4 border rounded shadow">
-            <a
-              href={user.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 font-bold"
-            >
-              {user.login}
-            </a>
-            <p>{user.location || "Location not available"}</p>
-            <p>Repos: {user.public_repos ?? "N/A"}</p>
+          <div key={user.id} className="p-4 mb-4 border rounded shadow bg-white">
+            <div className="flex items-center space-x-4">
+              <img src={user.avatar_url} alt={user.login} className="w-12 h-12 rounded-full" />
+              <div>
+                <a
+                  href={user.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 font-bold"
+                >
+                  {user.login}
+                </a>
+                <p>{user.location || 'Location not available'}</p>
+                <p>Repos: {user.public_repos ?? 'N/A'}</p>
+              </div>
+            </div>
           </div>
         ))}
       </div>
