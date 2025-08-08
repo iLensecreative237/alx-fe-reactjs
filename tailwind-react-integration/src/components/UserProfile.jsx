@@ -12,22 +12,18 @@ function UserProfile() {
       </p>
 
       <div class="flex justify-center gap-4 mt-4">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/github.svg" 
-      alt="GitHub" 
-      class="h-6 w-6" 
-      />
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/linkedin.svg" 
-      alt="LinkedIn" 
-      class="h-6 w-6 " 
-      />
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/facebook.svg" 
-      alt="Facebook" 
-      class="h-6 w-6" 
-      />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/X_icon_2.svg/2048px-X_icon_2.svg.png" 
-      alt="X" 
-      class="h-6 w-6" 
-      />
+        <a href="#">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/github.svg" alt="GitHub" class="h-6 w-6"  />
+        </a>
+        <a href="#">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/linkedin.svg" alt="LinkedIn" class="h-6 w-6 " />
+        </a>
+        <a href="#">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/facebook.svg" alt="Facebook" class="h-6 w-6" />
+        </a>
+        <a href="#">
+           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/X_icon_2.svg/2048px-X_icon_2.svg.png" alt="X" class="h-6 w-6" />
+        </a>
       </div>
     </div>
     
