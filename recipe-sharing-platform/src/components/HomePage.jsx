@@ -24,7 +24,7 @@ export default function HomePage() {
 
       {/* Recipe Grid */}
       <main className="max-w-7xl mx-auto p-6">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {recipes.map((recipe) => (
         <div
          key={recipe.id}
