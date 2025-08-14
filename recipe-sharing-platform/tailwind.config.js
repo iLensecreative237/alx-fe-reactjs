@@ -2,12 +2,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./index.html",              // root index.html
-    "./public/index.html",       // include public HTML
-    "./src/**/*.{js,ts,jsx,tsx}" // all source files
+    "./src/**/*.{js,jsx,ts,tsx}", // Scan all JS/TS/React files
+    "./public/index.html"         // Include public HTML (fixes your error)
   ],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
   },
   plugins: [],
-}
+};
