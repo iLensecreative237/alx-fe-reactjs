@@ -3,18 +3,54 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "/assets/Chicken Tikka Masala.jpg"
+    "image": "/assets/Chicken Tikka Masala.jpg",
+    "ingredients": [
+      "2 chicken breasts",
+      "1 tbsp olive oil",
+      "1 tsp chili powder",
+      "Salt to taste"
+    ],
+    "instructions": [
+      "Cut the chicken into strips.",
+      "Heat oil in a pan.",
+      "Add chicken and spices, then cook until done.",
+      "Serve with rice or vegetables."
+    ]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "/assets/Spaghetti Carbonara.jpg"
+    "image": "/assets/Spaghetti Carbonara.jpg",
+    "ingredients": [
+      "2 chicken breasts",
+      "1 tbsp olive oil",
+      "1 tsp chili powder",
+      "Salt to taste"
+    ],
+    "instructions": [
+      "Cut the chicken into strips.",
+      "Heat oil in a pan.",
+      "Add chicken and spices, then cook until done.",
+      "Serve with rice or vegetables."
+    ]
   },
   {
     "id": 3,
     "title": "Vegetable Stir Fry",
     "summary": "Fresh vegetables stir-fried in a savory sauce, served over rice or noodles.",
-    "image": "/assets/Vegetable Stir Fry.jpg"
+    "image": "/assets/Vegetable Stir Fry.jpg",
+    "ingredients": [
+      "2 chicken breasts",
+      "1 tbsp olive oil",
+      "1 tsp chili powder",
+      "Salt to taste"
+    ],
+    "instructions": [
+      "Cut the chicken into strips.",
+      "Heat oil in a pan.",
+      "Add chicken and spices, then cook until done.",
+      "Serve with rice or vegetables."
+    ]
   }
 ]
