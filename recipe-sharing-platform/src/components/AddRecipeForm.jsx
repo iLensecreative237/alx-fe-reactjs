@@ -23,28 +23,24 @@ export default function AddRecipeForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validate()) return;
 
-  if (!validate()) return;
+    const newRecipe = {
+      id: Date.now(),
+      title,
+      summary: instructions.substring(0, 100) + "...",
+      ingredients: ingredients.split("\n"),
+      steps: instructions.split("\n"),
+      image: "https://via.placeholder.com/150",
+    };
 
-  const newRecipe = {
-    id: Date.now(),
-    title,
-    summary: instructions.substring(0, 100) + "...",
-    ingredients: ingredients.split("\n"),
-    steps: instructions.split("\n"), // ✅ Changed from "instructions" to "steps"
-    image: "https://via.placeholder.com/150",
+    const existingRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    const updatedRecipes = [...existingRecipes, newRecipe];
+    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+    navigate("/");
   };
-
-  // Save to localStorage
-  const existingRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
-  const updatedRecipes = [...existingRecipes, newRecipe];
-  localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
-
-  // Navigate back to homepage
-  navigate("/");
-};
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-4">
