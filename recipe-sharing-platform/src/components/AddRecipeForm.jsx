@@ -23,26 +23,28 @@ export default function AddRecipeForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    if (!validate()) return;
+  if (!validate()) return;
 
-    const newRecipe = {
-      id: Date.now(), // Simulated ID
-      title,
-      summary: instructions.substring(0, 100) + "...",
-      ingredients: ingredients.split("\n"),
-      instructions: instructions.split("\n"),
-      image: "https://via.placeholder.com/150", // Placeholder image
-    };
-
-    // For now just log it or send it to backend (in your full app)
-    console.log("New Recipe:", newRecipe);
-
-    // Redirect to homepage or display success message
-    navigate("/");
+  const newRecipe = {
+    id: Date.now(),
+    title,
+    summary: instructions.substring(0, 100) + "...",
+    ingredients: ingredients.split("\n"),
+    steps: instructions.split("\n"), // ✅ Changed from "instructions" to "steps"
+    image: "https://via.placeholder.com/150",
   };
+
+  // Save to localStorage
+  const existingRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
+  const updatedRecipes = [...existingRecipes, newRecipe];
+  localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+
+  // Navigate back to homepage
+  navigate("/");
+};
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-4">
