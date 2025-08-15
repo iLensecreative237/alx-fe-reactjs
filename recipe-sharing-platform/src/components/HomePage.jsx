@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import recipeData from "../data.json"; // Direct import from src
 
 export default function HomePage() {
@@ -50,13 +51,13 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                {/* Link Button */}
-                <a
-                  href={`/recipe/${recipe.id}`}
+                {/* Link Button Here we ✅ Used Link instead of <a>*/}
+                <Link
+                  to={`/recipe/${recipe.id}`}
                   className="mt-4 inline-block bg-blue-500 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-blue-600 transition"
                 >
                   View Details →
-                </a>
+                </Link>
               </div>
             </div>
           ))}
