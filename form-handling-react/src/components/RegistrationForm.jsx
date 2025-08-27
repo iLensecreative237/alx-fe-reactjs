@@ -1,4 +1,3 @@
-// src/components/RegistrationForm.jsx
 import { useState } from 'react';
 
 const RegistrationForm = () => {
@@ -10,6 +9,8 @@ const RegistrationForm = () => {
 
   const [errors, setErrors] = useState({});
 
+  const { username, email, password } = formData; // ✅ Destructure the values
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -20,9 +21,9 @@ const RegistrationForm = () => {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.username.trim()) newErrors.username = 'Username is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    if (!formData.password.trim()) newErrors.password = 'Password is required';
+    if (!username.trim()) newErrors.username = 'Username is required';
+    if (!email.trim()) newErrors.email = 'Email is required';
+    if (!password.trim()) newErrors.password = 'Password is required';
     return newErrors;
   };
 
@@ -44,7 +45,7 @@ const RegistrationForm = () => {
         <label>Username:</label>
         <input
           name="username"
-          value={formData.username}
+          value={username} // ✅ matches expected: value={username}
           onChange={handleChange}
         />
         {errors.username && <span style={{ color: 'red' }}>{errors.username}</span>}
@@ -54,7 +55,7 @@ const RegistrationForm = () => {
         <label>Email:</label>
         <input
           name="email"
-          value={formData.email}
+          value={email} // ✅ matches expected: value={email}
           onChange={handleChange}
         />
         {errors.email && <span style={{ color: 'red' }}>{errors.email}</span>}
@@ -65,7 +66,7 @@ const RegistrationForm = () => {
         <input
           type="password"
           name="password"
-          value={formData.password}
+          value={password} // ✅ matches expected: value={password}
           onChange={handleChange}
         />
         {errors.password && <span style={{ color: 'red' }}>{errors.password}</span>}
